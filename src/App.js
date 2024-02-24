@@ -1,24 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import Card from "./components/Card";
+import { useState } from "react";
+import ClassCardComponent from "./components/ClassCardComponent.js";
 
 function App() {
+  const [rgbValue, setRgbValue] = useState("rgb(100, 100, 1OO)");
+
+  const createrandomColor = () => {
+    let r = Math.random() * 255,
+      g = Math.random() * 255,
+      b = Math.random() * 255;
+
+    setRgbValue(`rgb(${r},${g},${b})`);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Card id={1} rgbValue={rgbValue} createrandomColor={createrandomColor} />
+      <ClassCardComponent id={1} rgbValue={rgbValue} />
+    </>
   );
 }
 
